@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+
+body {
+background: linear-gradient(to right, #43e97b, #38f9d7);
+font-family: Verdana, sans-serif;
+}
+
+
+.register-box {
+width: 350px;
+margin: 80px auto;
+background: #ffffff;
+padding: 30px;
+border-radius: 12px;
+text-align: center;
+}
+
+
+.register-box h2 {
+margin-bottom: 20px;
+}
+
+
+.register-box input {
+width: 95%;
+padding: 10px;
+margin: 8px 0;
+}
+
+
+.register-box button {
+width: 100%;
+padding: 12px;
+background: #43e97b;
+border: none;
+color: #fff;
+font-size: 16px;
+cursor: pointer;
+}
+
+
+.register-box a {
+text-decoration: none;
+color: #43e97b;
+}

@@ -1,0 +1,45 @@
+@charset "ISO-8859-1";
+
+body {
+background: linear-gradient(to right, #4facfe, #00f2fe);
+font-family: Arial, sans-serif;
+}
+
+
+.login-box {
+width: 320px;
+margin: 120px auto;
+background: #fff;
+padding: 25px;
+border-radius: 10px;
+text-align: center;
+}
+
+
+.login-box h2 {
+margin-bottom: 20px;
+}
+
+
+.login-box input {
+width: 90%;
+padding: 10px;
+margin: 10px 0;
+}
+
+
+.login-box button {
+width: 95%;
+padding: 10px;
+background: #4facfe;
+border: none;
+color: white;
+font-size: 16px;
+cursor: pointer;
+}
+
+
+.login-box a {
+text-decoration: none;
+color: #4facfe;
+}
