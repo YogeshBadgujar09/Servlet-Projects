@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register</title>
+    <link rel="stylesheet" href="css/register.css">
+    <script type="text/javascript" src="js/password.js"></script>
+</head>
+<body>
+
+    <div class="register-box">
+        <h2>Create Account</h2>
+
+        <form action="RegisterServlet" onsubmit="return matchPassword()" method="post">
+        
+            <input type="text" name="txtName" placeholder="Full Name" required>
+
+            <input type="email" name="txtEmail" placeholder="Email Address" required>
+
+            <input type="tel" name="txtMobile" placeholder="Mobile Number" required>
+
+            <div class="gender-group">
+                <label>
+                    <input type="radio" name="rdGender" value="Male" required> Male
+                </label>
+                <label>
+                    <input type="radio" name="rdGender" Value="Female" > Female
+                </label>
+                <label>
+                    <input type="radio" name="rdGender" value="Other"> Other
+                </label>
+            </div>
+
+            <textarea placeholder="About Yourself" name="txtDescription" required></textarea>
+            
+            <input type="password"   name="txtPassword" placeholder="Password" required>
+
+			<input type="password" name="txtConfirmPassword" placeholder="Confirm Password" required>
+			
+			
+            <button type="submit">Register</button>
+        </form>
+
+        <p class="login-link">
+            Already have an account? <a href="login.html">Login</a>
+        </p>
+    </div>
+
+</body>
+</html>
