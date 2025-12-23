@@ -17,14 +17,16 @@ public class User {
 	private String email;
 	private String mobile ;
 	private String gender ;
+	private String discription ;
+	private String password ;
+	
 	public String getGender() {
 		return gender;
 	}
 	public void setGender(String gender) {
 		this.gender = gender;
 	}
-	private String discriptionString ;
-	private String password ;
+	
 	public String getName() {
 		return name;
 	}
@@ -43,11 +45,11 @@ public class User {
 	public void setMobile(String mobile) {
 		this.mobile = mobile;
 	}
-	public String getDiscriptionString() {
-		return discriptionString;
+	public String getDiscription() {
+		return discription;
 	}
-	public void setDiscriptionString(String discriptionString) {
-		this.discriptionString = discriptionString;
+	public void setDiscription(String discription) {
+		this.discription = discription;
 	}
 	public String getPassword() {
 		return password;
@@ -59,9 +61,6 @@ public class User {
 	@Override
 	public String toString() {
 		return "User [userId=" + userId + ", name=" + name + ", email=" + email + ", mobile=" + mobile + ", gender="
-				+ gender + ", discriptionString=" + discriptionString + ", password=" + password + "]";
+				+ gender + ", discriptionString=" + discription + ", password=" + password + "]";
 	}
-
-	
-	
 }

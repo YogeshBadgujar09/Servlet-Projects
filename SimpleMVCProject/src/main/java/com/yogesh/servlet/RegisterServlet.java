@@ -6,31 +6,18 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.yogesh.dao.UserDAOimplement;
+import com.yogesh.model.UserModel;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.hibernate.cfg.Configuration;
-
-import com.yogesh.entity.User;
-
-/**
- * Servlet implementation class RegisterServlet
- */
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
-     * @see HttpServlet#HttpServlet()
-     */
+    
     public RegisterServlet() {
         super();
-        // TODO Auto-generated constructor stub
     }
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
-	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
@@ -40,39 +27,20 @@ public class RegisterServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		 
-		String name = request.getParameter("txtName");
-		String email = request.getParameter("txtEmail");
-		String mobile = request.getParameter("txtMobile");
-		String gender = request.getParameter("rdGender");
-		String description = request.getParameter("txtDescription");
-		String password = request.getParameter("txtPassword");
 		
-		System.out.println(name + " " + email + " " + mobile + " " + gender +  " " + description + password);
+		UserModel userModel = new UserModel();
 		
-		Configuration configuration = new Configuration();
-		configuration.configure();
+		userModel.setName(request.getParameter("txtName"));
+		userModel.setEmail(request.getParameter("txtEmail"));
+		userModel.setMobile(request.getParameter("txtMobile"));
+		userModel.setGender(request.getParameter("rdGender"));
+		userModel.setDiscription(request.getParameter("txtDescription"));
+		userModel.setPassword(request.getParameter("txtPassword"));
 		
-		SessionFactory sessionFactory = configuration.buildSessionFactory();
+		System.out.println("Data :" + userModel.toString());
 		
-		Session session = sessionFactory.openSession();
-		
-		User user = new User();
-		
-		user.setName(name);
-		user.setEmail(email);
-		user.setMobile(mobile);
-		user.setGender(gender);
-		user.setDiscriptionString(description);
-		user.setPassword(password);
-		
-		System.out.println("Data :" + user.toString());
-		
-		session.save(user);
-		
-		session.close();
-		
-		
+		UserDAOimplement userDAOimplement = new UserDAOimplement();
+		userDAOimplement.setUser(userModel);
 		
 	}
 
