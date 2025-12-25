@@ -7,6 +7,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.yogesh.dao.UserDAOimplement;
+import com.yogesh.model.UserModel;
+
 /**
  * Servlet implementation class LoginServlet
  */
@@ -34,11 +37,14 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+				
 		String email = request.getParameter("txtEmail");
 		String password = request.getParameter("txtPassword");
 		
-		System.out.println("Email : " + email + " Password :" + password );
+		System.out.println("Login Data \n\nEmail : " + email + " Password :" + password );
+		
+		new UserDAOimplement().login(email, password);
+		
 	}
 
 }

@@ -32,7 +32,22 @@ public class UserDAOimplement implements UserDAO {
 	}
 
 	@Override
-	public User getUser() {	
+	public User getUser(UserModel userModel) {	
+		
+		return null;
+	}
+
+	@Override
+	public User login(String email, String password) {
+	
+		session = SingletonDesignPattern.getSessionFactoryInstance().openSession();
+		session.beginTransaction();
+		
+		User user = session.createQuery("FROM user WHERE email = :email", User.class).setParameter("email", email).uniqueResult();
+		
+		System.out.println("RetTrival Data : " + user.getEmail() + user.getPassword());
+		
+		session.close();
 		return null;
 	}
 }

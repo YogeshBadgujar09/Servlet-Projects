@@ -39,8 +39,7 @@ public class RegisterServlet extends HttpServlet {
 		
 		System.out.println("Data :" + userModel.toString());
 		
-		UserDAOimplement userDAOimplement = new UserDAOimplement();
-		userDAOimplement.setUser(userModel);
+		new UserDAOimplement().setUser(userModel);
 		
 	}
 
