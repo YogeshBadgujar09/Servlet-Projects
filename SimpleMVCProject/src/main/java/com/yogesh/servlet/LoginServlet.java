@@ -6,17 +6,24 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import com.yogesh.dao.UserDAOimplement;
+import com.yogesh.entity.User;
 import com.yogesh.model.UserModel;
+import com.yogesh.services.UserServices;
+import com.yogesh.services.UserServicesImp;
 
 /**
  * Servlet implementation class LoginServlet
  */
 @WebServlet("/LoginServlet")
 public class LoginServlet extends HttpServlet {
+	
 	private static final long serialVersionUID = 1L;
-       
+    private UserServices userServices ;
+    private HttpSession httpSession  ;
+	
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -37,13 +44,23 @@ public class LoginServlet extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				
+		
+		userServices = new UserServicesImp();
+		
 		String email = request.getParameter("txtEmail");
 		String password = request.getParameter("txtPassword");
 		
 		System.out.println("Login Data \n\nEmail : " + email + " Password :" + password );
 		
-		new UserDAOimplement().login(email, password);
+		User user = userServices.loginService(email, password);
+		
+		if(user != null){
+			httpSession = request.getSession();
+			httpSession.setAttribute("Login User :", user);
+			response.sendRedirect("dashboard.jsp");
+		}else {
+			request.getRequestDispatcher("login.html").forward(request, response);
+		}
 		
 	}
 

@@ -1,11 +1,13 @@
 package com.yogesh.dao;
 
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 
 import com.yogesh.entity.User;
 import com.yogesh.model.UserModel;
 import com.yogesh.util.SingletonDesignPattern;
+
 
 public class UserDAOimplement implements UserDAO {
 
@@ -30,24 +32,26 @@ public class UserDAOimplement implements UserDAO {
 			session.save(user);
 			session.close();
 	}
-
+	
 	@Override
 	public User getUser(UserModel userModel) {	
-		
 		return null;
 	}
 
 	@Override
 	public User login(String email, String password) {
 	
+		System.out.println("Data enter : " + email + " " + password);
+		
 		session = SingletonDesignPattern.getSessionFactoryInstance().openSession();
 		session.beginTransaction();
 		
-		User user = session.createQuery("FROM user WHERE email = :email", User.class).setParameter("email", email).uniqueResult();
+		User user = session.createQuery("FROM User WHERE email = :email", User.class).setParameter("email", email).uniqueResult();
 		
-		System.out.println("RetTrival Data : " + user.getEmail() + user.getPassword());
-		
+//		System.out.println("RetTrival Data : " + user.getEmail() + " " + user.getPassword());
+			
 		session.close();
-		return null;
+		
+		return user ;
 	}
 }
