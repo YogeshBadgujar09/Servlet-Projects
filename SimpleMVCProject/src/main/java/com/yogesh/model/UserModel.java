@@ -10,6 +10,14 @@ public class UserModel {
 	private String discription ;
 	private String password ;
 	
+	
+	
+	public int getUserId() {
+		return userId;
+	}
+	public void setUserId(int userId) {
+		this.userId = userId;
+	}
 	public String getGender() {	return gender; }
 	public void setGender(String gender) {	this.gender = gender; }
 	

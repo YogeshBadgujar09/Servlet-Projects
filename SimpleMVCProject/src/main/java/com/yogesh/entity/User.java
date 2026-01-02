@@ -20,6 +20,13 @@ public class User {
 	private String discription ;
 	private String password ;
 	
+	public Integer getUserId() {
+		return userId;
+	}
+	
+	public void setUserId(Integer userId) {
+		this.userId = userId;
+	}
 	public String getGender() {
 		return gender;
 	}

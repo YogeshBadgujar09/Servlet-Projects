@@ -50,14 +50,19 @@ public class LoginServlet extends HttpServlet {
 		String email = request.getParameter("txtEmail");
 		String password = request.getParameter("txtPassword");
 		
-		System.out.println("Login Data \n\nEmail : " + email + " Password :" + password );
+		System.out.println("\n Login Data \n\nEmail : " + email + " Password :" + password );
 		
 		User user = userServices.loginService(email, password);
 		
 		if(user != null){
+			
 			httpSession = request.getSession();
-			httpSession.setAttribute("Login User :", user);
+			httpSession.setAttribute("user", user);
+			
 			response.sendRedirect("dashboard.jsp");
+			
+			System.out.println("Get Seesion Id " + httpSession);
+			
 		}else {
 			request.getRequestDispatcher("login.html").forward(request, response);
 		}
